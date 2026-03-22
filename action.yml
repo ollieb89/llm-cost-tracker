@@ -1,0 +1,56 @@
+name: 'llm-cost-tracker'
+description: 'Track LLM API costs in CI pipelines and alert on budget overruns'
+author: 'ollieb89'
+
+branding:
+  icon: 'dollar-sign'
+  color: 'green'
+
+inputs:
+  provider:
+    description: 'LLM provider: openai | anthropic | google | cohere'
+    required: false
+  model:
+    description: 'Model name (e.g. gpt-4o, claude-sonnet-4, gemini-2.5-flash)'
+    required: false
+  input-tokens:
+    description: 'Number of input/prompt tokens used'
+    required: false
+  output-tokens:
+    description: 'Number of output/completion tokens used'
+    required: false
+  budget-limit:
+    description: 'Budget limit in USD per run. Set to trigger alerts.'
+    required: false
+  on-budget-exceeded:
+    description: 'Action on budget breach: warn | fail | comment. Default: warn'
+    required: false
+    default: 'warn'
+  post-comment:
+    description: 'Post a cost report as a PR comment. Default: false'
+    required: false
+    default: 'false'
+  log-file:
+    description: 'Path to CI log file to scan for LLM usage patterns'
+    required: false
+  output-file:
+    description: 'Path to write cost report JSON or CSV artifact'
+    required: false
+  github-token:
+    description: 'GitHub token for PR comments (required if post-comment: true)'
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  cost-usd:
+    description: 'Total cost in USD for this run'
+  total-tokens:
+    description: 'Total tokens consumed (input + output)'
+  budget-remaining:
+    description: 'Remaining budget in USD (empty if no budget set)'
+  budget-exceeded:
+    description: 'Whether the budget was exceeded (true/false)'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
