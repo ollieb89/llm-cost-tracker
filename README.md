@@ -1,5 +1,7 @@
 # llm-cost-tracker
 
+[![AI DevOps Actions Suite](https://img.shields.io/badge/AI%20DevOps%20Actions-Suite-blue?logo=github)](https://github.com/ollieb89/ai-devops-actions)
+
 [![CI](https://github.com/ollieb89/llm-cost-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/ollieb89/llm-cost-tracker/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/ollieb89/llm-cost-tracker)](https://github.com/ollieb89/llm-cost-tracker/releases)
